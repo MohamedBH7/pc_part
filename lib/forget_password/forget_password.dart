@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pc_part/config.dart';
 
 class ForgetPassword extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
 
   void sendEmailRequest(BuildContext context) async {
-    var url = Uri.parse('http://192.168.68.111/server/REQUEST_METHOD.php');
+    var url = Uri.parse('${Config.apiBaseUrl}/server/REQUEST_METHOD.php');
     var response = await http.post(url, body: {'email': emailController.text});
 
     if (response.statusCode == 200) {

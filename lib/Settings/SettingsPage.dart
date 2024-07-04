@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pc_part/Settings/all_orders_page.dart';
+import 'package:pc_part/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -45,7 +46,7 @@ class _SettingsPageState extends State<SettingsPage> {
   void fetchData() async {
     try {
       final response = await http.get(Uri.parse(
-          'http://192.168.68.111/server/setting_data.php?userID=${widget.userID}'));
+          '${Config.apiBaseUrl}/server/setting_data.php?userID=${widget.userID}'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -342,7 +343,7 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   void updateUserInfo(String field, String value) async {
-    final uri = Uri.parse('http://192.168.68.111/server/update.php');
+    final uri = Uri.parse('${Config.apiBaseUrl}/server/update.php');
     final body = {
       'userID': widget.userID,
       'field': field,

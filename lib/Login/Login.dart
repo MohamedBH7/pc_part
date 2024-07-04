@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pc_part/config.dart';
 import 'dart:convert';
 import '../Explorer/explorer_page.dart';
 import '../forget_password/forget_password.dart';
@@ -46,7 +47,7 @@ class _LoginState extends State<Login> {
       _isLoading = true;
     });
 
-    var url = Uri.parse('http://192.168.68.111/server/login.php');
+    var url = Uri.parse('${Config.apiBaseUrl}/server/login.php');
     var response = await http.post(url, body: {
       'Email': username,
       'password': password,

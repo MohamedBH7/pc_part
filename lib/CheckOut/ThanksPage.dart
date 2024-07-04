@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:pc_part/Explorer/explorer_page.dart';
+import 'package:pc_part/config.dart';
 
 class ThanksPage extends StatelessWidget {
   final String userID;
@@ -17,7 +18,7 @@ class ThanksPage extends StatelessWidget {
 
   // Function to delete purchase records
   Future<void> deletePurchaseRecords(String userID, List<String> itemIDs, double total) async {
-    var deleteUrl = Uri.parse('http://192.168.68.111/server/delete_items.php');
+    var deleteUrl = Uri.parse('${Config.apiBaseUrl}/server/delete_items.php');
 
     try {
       // Convert itemIDs to comma-separated string

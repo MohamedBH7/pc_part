@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pc_part/CheckOut/PaymentPage.dart';
+import 'package:pc_part/config.dart';
 
 class BasketPage extends StatefulWidget {
   final String userID;
@@ -26,7 +27,7 @@ class _BasketPageState extends State<BasketPage> {
   }
 
   Future<void> fetchBasketItems() async {
-    var url = Uri.parse('http://192.168.68.111/server/select_Basket_data.php');
+    var url = Uri.parse('${Config.apiBaseUrl}/server/select_Basket_data.php');
     var response = await http.post(url, body: {'UserID': widget.userID});
 
     if (response.statusCode == 200) {

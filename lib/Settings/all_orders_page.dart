@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pc_part/config.dart';
 
 class AllOrdersPage extends StatefulWidget {
   final String userID;
@@ -22,7 +23,7 @@ class _AllOrdersPageState extends State<AllOrdersPage> {
 
   void fetchAllOrders() async {
     final response = await http.get(Uri.parse(
-        'http://192.168.68.111/server/setting_data.php?userID=${widget.userID}'));
+        '${Config.apiBaseUrl}/server/setting_data.php?userID=${widget.userID}'));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);

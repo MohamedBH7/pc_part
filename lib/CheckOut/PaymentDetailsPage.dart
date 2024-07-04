@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pc_part/CheckOut/NotApprovedPage.dart';
 import 'package:pc_part/CheckOut/ThanksPage.dart';
 import 'package:http/http.dart' as http;
+import 'package:pc_part/config.dart';
 
 class PaymentDetailsPage extends StatelessWidget {
   final String userID;
@@ -24,7 +25,7 @@ class PaymentDetailsPage extends StatelessWidget {
   int _invoiceNumberCounter = 1000; // Start counter from 1000
 
   Future<void> deletePurchaseRecords(String userID, String itemID, double total, String itemQuantities) async {
-    var deleteUrl = Uri.parse('http://192.168.68.111/server/delete_items.php');
+    var deleteUrl = Uri.parse('${Config.apiBaseUrl}/server/delete_items.php');
 
     try {
       // Generate invoice number

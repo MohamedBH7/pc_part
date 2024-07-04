@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'package:pc_part/config.dart';
 class AccountPage extends StatefulWidget {
   final String userID;
 
@@ -22,7 +22,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Future<void> fetchUserData() async {
-    var url = Uri.parse('http://192.168.68.111/server/select_User_data.php');
+    var url = Uri.parse('${Config.apiBaseUrl}/server/select_User_data.php');
     var response = await http.post(url, body: {'UserID': widget.userID});
 
     if (response.statusCode == 200) {

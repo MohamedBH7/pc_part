@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:intl/intl.dart';
+import 'package:pc_part/config.dart';
 
 class DetailsPage extends StatefulWidget {
   final String category;
@@ -77,7 +78,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   Future<List<Map<String, dynamic>>?> fetchDataForCategory(String name) async {
     var categoryName = name.split(' ').first;
-    var url = "http://192.168.68.111/server/filter.php?Name=$categoryName";
+    var url = "${Config.apiBaseUrl}/server/filter.php?Name=$categoryName";
     try {
       var res = await http.get(Uri.parse(url));
       if (res.statusCode == 200) {
